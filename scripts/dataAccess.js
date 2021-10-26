@@ -6,13 +6,44 @@ This module contains all get*() and set*() functions for data.
 
 import { database } from "./database.js"
 
+export const getFacilities = () => {
+    return database.facilities.map(facility => ({...facility}))
+}
+
+export const getGovernors = () => {
+    return database.governors.map(gov => ({...gov}))
+}
+
+export const getColonies = () => {
+    return database.colonies.map(colony => ({...colony}))
+}
+
+export const getMinerals = () => {
+    return database.minerals.map(mineral => ({...mineral}))
+}
+
+export const getMineralsInventory = () => {
+    return database.mineralInventory.map(inventory => ({...inventory}))
+} 
+
+export const getMineralFacilities = () => {
+    return database.mineralFacilities.map(mineralFacility => ({...mineralFacility}))
+}
+
+
 export const setFacility = (facilityId) => {
     database.transientState.selectedFacility = facilityId
     document.dispatchEvent( new CustomEvent("stateChanged") )
 }
 
-export const getFacilities = () => {
-    return database.facilities.map(f => ({...f}))
+export const setGovernor = (governorId) => {
+    database.transientState.selectedGovernor = governorId
+    document.dispatchEvent( new CustomEvent("stateChanged") )
+}
+
+export const setMineral = (mineralId) => {
+    database.transientState.selectedMineral = mineralId
+    document.dispatchEvent( new CustomEvent("stateChanged") )
 }
 
 export const purchaseMineral = () => {
