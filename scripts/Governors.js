@@ -3,7 +3,7 @@
 This module contains event listers and creates html for governors, and exports to Exomine.
 
 */
-import { getGovernors } from "/database.js"
+import { getGovernors } from "./dataAccess.js"
 
 const governorsArray = getGovernors()
 

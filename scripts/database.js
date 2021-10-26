@@ -90,8 +90,27 @@ export const database = {
             name: "Lolo Purs",
             isActive: true,
             colonyId:9
+        },{
+            id: 17,
+            name: "Anaconda Farr",
+            isActive: true,
+            colonyId:9
+        },{
+            id: 18,
+            name: "Tikkes",
+            isActive: false,
+            colonyId:10
+        },{
+            id: 19,
+            name: "Meena Tills",
+            isActive: true,
+            colonyId:10
+        },{
+            id: 20,
+            name: "Ainlee Teem",
+            isActive: true,
+            colonyId:1
         }
-
     ],
     colonies: [
         {
@@ -121,10 +140,10 @@ export const database = {
         },{
             id: 9,
             name: "Rodia"
+        },{
+            id: 10,
+            name: "Mon Cala"
         }
-
-
-
     ],
     mineralInventory: [
         {
@@ -137,8 +156,35 @@ export const database = {
     minerals: [
         {
             id: 1,
-            type: "iron"
-        }
+            type: "Carbonie"
+        },{
+            id: 2,
+            type: "Durelium"
+        },{
+            id: 3,
+            type: "Quadrillium"
+        },{
+            id: 4,
+            type: "Barab ore"
+        },{
+            id: 5,
+            type: "Guerrerite"
+        },{
+            id: 6,
+            type: "Hollinium"
+        },{
+            id: 7,
+            type: "Permex"
+        },{
+            id: 8,
+            type: "Azurite"
+        },{
+            id: 9,
+            type: "Agrocite"
+        },{
+            id: 10,
+            type: "Hibridium"
+        },
     ],
     mineralFacilities: [
         {
@@ -151,9 +197,45 @@ export const database = {
     facilities: [
         {
             id: 1,
-            name: "lunarBase",
+            name: "Salliche",
             isActive: true
-        }
+        },{
+            id: 2,
+            name: "Taldot sector",
+            isActive: true
+        },{
+            id: 3,
+            name: "Sern Prime",
+            isActive: true
+        },{
+            id: 4,
+            name: "Prontobranch",
+            isActive: true
+        },{
+            id: 5,
+            name: "Sennex",
+            isActive: true
+        },{
+            id: 6,
+            name: "Techno Union",
+            isActive: true
+        },{
+            id: 7,
+            name: "Chommell sector",
+            isActive: true
+        },{
+            id: 8,
+            name: "Er'Kit",
+            isActive: true
+        },{
+            id: 9,
+            name: "Kalevala",
+            isActive: true
+        },{
+            id: 10,
+            name: "Forrested Moon of Endor",
+            isActive: true
+        },
     ],
     transientState: {}
 }
