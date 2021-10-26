@@ -9,7 +9,7 @@ import { getFacilities } from "./dataAccess.js"
 const facilitiesArray = getFacilities()
 
 export const facilitiesHTML = () => {
-    let html = "<h2>choose a facility</h2>"
+   let html = "<h2>choose a facility</h2>"
 
     html += `<select id="facility">`
     html += '<option value="0">choose a facility</option>'
@@ -21,5 +21,4 @@ export const facilitiesHTML = () => {
     html += facilityOptions.join("")
     html += "</select>"
     return html
-
 }
