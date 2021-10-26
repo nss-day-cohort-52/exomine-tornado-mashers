@@ -1,4 +1,5 @@
 export const database = {
+
     governors: [
         { id: 1, name: "Ask Aak", isActive: true, colonyId: 1 },
         { id: 2, name: "Agrippa Aldrete", isActive: true, colonyId: 2 },
@@ -23,6 +24,7 @@ export const database = {
         { id: 19, name: "Meena Tills", isActive: true, colonyId:10 },
         { id: 20, name: "Ainlee Teem", isActive: true, colonyId:1 }
     ],
+
     colonies: [
         { id: 1, name: "Malastare" },
         { id: 2, name: "Alderaan" },
@@ -35,6 +37,7 @@ export const database = {
         { id: 9, name: "Rodia" },
         { id: 10, name: "Mon Cala" }
     ],
+
     mineralInventory: [
         { id: 1, colonyId: 1, mineralId: 1, mineralQty: 10 },
         { id: 2, colonyId: 1, mineralId: 2, mineralQty: 30 },
@@ -79,6 +82,7 @@ export const database = {
         { id: 41, colonyId: 10, mineralId: 9, mineralQty: 1 },
         { id: 42, colonyId: 10, mineralId: 10, mineralQty: 41 }
     ],
+
     minerals: [
         { id: 1, type: "Carbonie" },
         { id: 2, type: "Durelium" },
@@ -91,8 +95,8 @@ export const database = {
         { id: 9, type: "Agrocite" },
         { id: 10, type: "Hibridium" }
     ],
-    facilityMinerals: [
-        
+
+    facilityMinerals: [    
         { id: 1, facilityId: 1, mineralId: 4, quantity: 20 },
         { id: 2, facilityId: 1, mineralId: 6, quantity: 60 },
         { id: 3, facilityId: 1, mineralId: 8, quantity: 34 },
@@ -130,8 +134,8 @@ export const database = {
         { id: 35, facilityId: 10, mineralId: 4, quantity: 92 },
         { id: 36, facilityId: 10, mineralId: 6, quantity: 82 }
     ],
-    facilities: [
-        
+
+    facilities: [    
         { id: 1, name: "Salliche", isActive: true },
         { id: 2, name: "Taldot sector", isActive: true },
         { id: 3, name: "Sern Prime", isActive: true },
@@ -143,5 +147,7 @@ export const database = {
         { id: 9, name: "Kalevala", isActive: false },
         { id: 10, name: "Forrested Moon of Endor", isActive: true }
     ],
+
     transientState: {}
+
 }
