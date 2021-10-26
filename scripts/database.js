@@ -13,7 +13,7 @@ export const database = {
             name: "mars"
         }
     ],
-    purchasedMinerals: [
+    mineralInventory: [
         {
             id: 1,
             colonyId: 1,

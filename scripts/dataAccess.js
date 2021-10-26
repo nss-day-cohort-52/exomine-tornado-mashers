@@ -1,3 +1,9 @@
+/*
+
+This module contains all get*() and set*() functions for data.
+
+*/
+
 import { database } from "./database.js"
 
 export const setFacility = (facilityId) => {
