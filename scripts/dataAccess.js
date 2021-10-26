@@ -7,7 +7,7 @@ This module contains all get*() and set*() functions for data.
 import { database } from "./database.js"
 
 export const getFacilities = () => {
-    return database.facilities.map(facilities => ({...facilities}))
+    return database.facilities.map(facility => ({...facility}))
 }
 
 export const getGovernors = () => {
@@ -15,11 +15,11 @@ export const getGovernors = () => {
 }
 
 export const getColonies = () => {
-    return database.colonies.map(colonies => ({...colonies}))
+    return database.colonies.map(colony => ({...colony}))
 }
 
 export const getMinerals = () => {
-    return database.minerals.map(minerals => ({...minerals}))
+    return database.minerals.map(mineral => ({...mineral}))
 }
 
 export const getMineralsInventory = () => {
@@ -27,7 +27,7 @@ export const getMineralsInventory = () => {
 } 
 
 export const getMineralFacilities = () => {
-    return database.mineralFacilities.map(mineralFacilities => ({...mineralFacilities}))
+    return database.mineralFacilities.map(mineralFacility => ({...mineralFacility}))
 }
 
 
