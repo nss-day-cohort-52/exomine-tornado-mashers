@@ -1,20 +1,46 @@
-const database = {
+export const database = {
+    governors: [
+        {
+            id: 1,
+            name: "John Doe",
+            isActive: true,
+            colonyId: 1
+        }
+    ],
+    colonies: [
+        {
+            id: 1,
+            name: "mars"
+        }
+    ],
+    mineralInventory: [
+        {
+            id: 1,
+            colonyId: 1,
+            mineralId: 1,
+            mineralQty: 1.5
+        }
+    ],
+    minerals: [
+        {
+            id: 1,
+            type: "iron"
+        }
+    ],
+    mineralFacilities: [
+        {
+            id: 1,
+            facilityId: 1,
+            mineralsId: 1,
+            quantity: 1.5
+        }
+    ],
+    facilities: [
+        {
+            id: 1,
+            name: "lunarBase",
+            isActive: true
+        }
+    ],
     transientState: {}
-}
-
-export const setFacility = (facilityId) => {
-    database.transientState.selectedFacility = facilityId
-    document.dispatchEvent( new CustomEvent("stateChanged") )
-}
-
-export const getFacilities = () => {
-    return database.facilities.map(f => ({...f}))
-}
-
-export const purchaseMineral = () => {
-
-        // Broadcast custom event to entire documement so that the
-        // application can re-render and update state
-        document.dispatchEvent( new CustomEvent("stateChanged") )
-    }
 }
