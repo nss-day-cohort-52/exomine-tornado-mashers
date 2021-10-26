@@ -4,7 +4,7 @@ This module contains event listers and creates html for facilities, and exports 
 
 */
 
-import { getFacilities } from "/database.js"
+import { getFacilities } from "./dataAccess.js"
 
 const facilitiesArray = getFacilities()
 
@@ -14,7 +14,7 @@ export const facilitiesHTML = () => {
     html += `<select id="facility">`
     html += '<option value="0">choose a facility</option>'
 
-    const facilityOptions = governorsArray.map( (facility) => {
+    const facilityOptions = facilitiesArray.map( (facility) => {
         return `<option value="${facility.id}">${facility.name}</option>`
     })
 
