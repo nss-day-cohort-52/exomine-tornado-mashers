@@ -13,17 +13,23 @@ import { getGovernors, setGovernor } from "./dataAccess.js"
 const governorsArray = getGovernors()
 
 export const governor = () => {
-        let html = "<h2>choose a governor</h2>"
-
-    html += `<select id="governor">`
-    html += '<option value="0">choose a governor</option>'
+    
+    let governorsHTML = `
+    
+        <label for="chooseGovernor" class="governor__label">Choose a governor </label> 
+        <select name="chooseGovernor" id="governor">
+        <option value="0">Choose a governor</option>
+    `
 
     const governorOptions = governorsArray.map( (governor) => {
-        return `<option value="${governor.id}">${governor.name}</option>`
+        if (governor.isActive) {
+            return `<option value="${governor.id}">${governor.name}</option>`
+        }
     })
 
-    html += governorOptions.join("")
-    html += "</select>"
-    return html
+    governorsHTML += governorOptions.join("")
+    governorsHTML += "</select>"
+
+    return governorsHTML
 }
 

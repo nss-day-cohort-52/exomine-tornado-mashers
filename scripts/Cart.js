@@ -8,6 +8,8 @@ const facilityName = "earth"
 
 
 export const cart = () => {
-return `1 ton of ${mineral} from ${facilityName}`
+return `
+    <h2>Space Cart</h2>
+    1 ton of ${mineral} from ${facilityName}`
 }
 

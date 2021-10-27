@@ -1,0 +1,61 @@
+.top {
+    display: flex;
+}
+
+.governor {
+    display: flex;
+    flex: 1;
+    margin: 1em;
+    padding: 2em;
+    align-items: baseline;
+}
+
+.governor__label,
+.facilities__label {
+    margin-right: 1em;
+}
+
+.available_resources {
+    flex: 1;
+    margin: 1em 1em 1em 0;
+    padding: 1em 2em;
+    text-align: center;
+}
+
+.bottom {
+    display: flex;
+}
+
+.facilities {
+    display: flex;
+    margin: 1em;
+    padding: 0 2em;
+}
+
+.minerals_avail {
+    border: 2px dotted #a880bc;
+    flex: 3;
+    margin: 1em;
+    padding: 2em;
+    text-align: center;
+}
+
+.cart {
+    border: 2px dotted #83bbbc;
+    text-align: center;
+    padding: 2em;
+    margin: 1em 1em 1em 0;
+}
+
+.orderButton {
+    margin: 1rem auto;
+    background-color: lightgrey;
+    color: #404040;
+    font-size: .9rem;
+    line-height: 1.2;
+    max-width: 70%;
+    display: block;
+    
+}
+
+
