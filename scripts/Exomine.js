@@ -10,27 +10,32 @@ import { availableResources } from "./AvailableResources.js"
 This module imports html from individual modules and exports to main.js.
 
 */
-const facilitiesHTML= facilities()
-const governorHTML = governor()
-const cartHTML = cart()
-const buttonHTML = button()
-const facilityMineralHTML = facilityMinerals()
+
+
+
 
 
 export const renderHTML = () => {
     return `
     <h1>Solar System Mining Marketplace</h1>
     <div class="top">
-        <section class="governor">${governorHTML}</section>
+        <section class="governor">${governor()}</section>
         <section class="available_resources"> ${availableResources()}</section> 
     </div>
+<<<<<<< HEAD
     <section class="facilities">${facilitiesHTML}</section>
     
     <div class="bottom">
         <section class="minerals_avail">${facilityMineralHTML}</section> 
+=======
+    <section class="facility">${facilities()}</section>
+    
+    <div class="bottom">
+        <section class="minerals_avail">${facilityMinerals()}<section> 
+>>>>>>> main
         <section class="cart">
-            <div class="cartHTML">${cartHTML}</div>
-            <div class="button">${buttonHTML}</div> 
+            <div class="cartHTML">${cart()}</div>
+            <div class="button">${button()}</div> 
         </section>
     </div>
     `
