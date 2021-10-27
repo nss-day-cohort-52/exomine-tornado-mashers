@@ -8,7 +8,7 @@ import { getGovernors } from "./dataAccess.js"
 const governorsArray = getGovernors()
 
 export const governorHTML = () => {
-    let html = "<h2>choose a governor</h2>"
+        let html = "<h2>choose a governor</h2>"
 
     html += `<select id="governor">`
     html += '<option value="0">choose a governor</option>'
@@ -20,9 +20,5 @@ export const governorHTML = () => {
     html += governorOptions.join("")
     html += "</select>"
     return html
-
 }
-
-
-
 
