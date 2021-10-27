@@ -2,6 +2,7 @@ import { cart } from "./Cart.js";
 import { facilities } from "./Facilities.js";
 import { governor} from "./Governors.js";
 import { button } from "./OrderButton.js";
+import { availableResources } from "./AvailableResources.js"
 /*
 
 This module imports html from individual modules and exports to main.js.
@@ -17,7 +18,7 @@ export const renderHTML = () => {
     <h1>Solar System Mining Marketplace</h1>
     <div class="top">
         <section class="governor">${governorHTML}</section>
-        <section class="available_resources"> inventory of colonies</section> 
+        <section class="available_resources"> ${availableResources()}</section> 
     </div>
     <section class="facility">${facilitiesHTML}</section>
 
