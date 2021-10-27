@@ -5,25 +5,17 @@ This module contains event listers and creates html for facilityMinerals, and ex
 
 */
 
-import { getMineralFacilities, getFacilities, getMinerals } from "./dataAccess.js"
+import { getMineralFacilities, getFacilities, getMinerals, getFacilityPreselector } from "./dataAccess.js"
 
 const facilitiesArray = getFacilities()
 const mineralFacilities = getMineralFacilities()
 const mineralArray = getMinerals()
-let targetValue = 0 
-
-document.addEventListener(
-    "change",
-    (event) => {
-        if (event.target.id ==="facility"){
-            targetValue = parseInt(event.target.value)
-            facilityMinerals()
-            document.dispatchEvent(new CustomEvent("facilitychanged"))
-        }
-    }
-)
 
 export const facilityMinerals = () => {
+
+    //import facility selected in Facilities event listener from getFacilityPreselector
+    const targetValue = getFacilityPreselector()
+
     let currentFacility = ""
     for (const minfac of mineralFacilities){
         if (minfac.facilityId === targetValue){

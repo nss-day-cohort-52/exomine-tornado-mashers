@@ -3,12 +3,13 @@
 This module contains event listers and creates html for cart to order minerals, and exports to Exomine.
 
 */
-
+/*
 import { getFacilities, getMinerals, getMineralsFacilities } from "./dataAccess.js"
 
 const facilties = getFacilities()
-
-
+const minerals = getMinerals()
+const minFacs = getMineralsFacilities()
+*/
 
 const mineral = "rock"
 const facilityName = "earth"
@@ -19,4 +20,5 @@ return `
     <h2>Space Cart</h2>
     1 ton of ${mineral} from ${facilityName}`
 }
+
 

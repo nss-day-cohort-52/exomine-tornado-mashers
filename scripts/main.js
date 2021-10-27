@@ -9,24 +9,13 @@ This module reders HTML to index.html.
 
 let el = document.querySelector(".container")
 
-const htmlPage = () => {
+const renderPageHTML = () => {
 el.innerHTML = renderHTML()
 }
 
-htmlPage()
+renderPageHTML()
 
-document.addEventListener(
-    "facilitychanged",
-    (event) => {
-        htmlPage()
-        console.log("state changed")
-    }
-)
-
-document.addEventListener(
-    "governorChanged",
-    (event) => {
-        htmlPage()
-        console.log("state changed")
-    }
-)
+document.addEventListener("stateChanged", event => {
+    console.log("State of data has changed. Regenerating HTML...")
+    renderPageHTML()
+})
