@@ -11,7 +11,7 @@ const facilityArray = getFacilities()
 
 
 
-export const facilityMineral = () => {
+export const facilityMinerals = () => {
 
     let html = `<h2>facility mineral for Alderaan</h2>`
     html += "<ul>"
