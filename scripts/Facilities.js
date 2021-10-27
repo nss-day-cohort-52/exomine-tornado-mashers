@@ -9,7 +9,7 @@ import { getFacilities } from "./dataAccess.js"
 const facilitiesArray = getFacilities()
 
 export const facilities = () => {
-   
+
     let facilitiesHTML = `
 
         <label for="chooseFacility" class="facilities__label">Choose a facility</label>
