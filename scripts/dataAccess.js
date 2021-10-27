@@ -38,6 +38,10 @@ export const getFacilityPreselector = () => {
     return database.transientState.facilityId
 }
 
+export const getMineralPreselector = () => {
+    return database.transientState.mineralId
+}
+
 export const setFacility = (id) => {
     database.transientState.facilityId = id
     document.dispatchEvent( new CustomEvent("stateChanged") )
