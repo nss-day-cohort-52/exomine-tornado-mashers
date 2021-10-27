@@ -18,7 +18,7 @@ document.addEventListener(
 )
 
 export const facilities = () => {
-   
+
     let facilitiesHTML = `
 
         <label for="chooseFacility" class="facilities__label">Choose a facility</label>
