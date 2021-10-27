@@ -6,13 +6,6 @@ AvaiableResources is an intersection dbase for colonies and minerals.
 This module contains event listers and creates html for AvailableResources, and exports to Exomine.
 
 */
-// get governer id user chose
-// get colonyId value from said governer
-// compare the colonyId to colony ids in colony array
-// display colony that matches colonyid
-
-
-
 let govValue = 0
 
 document.addEventListener(
@@ -30,11 +23,7 @@ export const availableResources =() => {
 const coloniesArray = getColonies()
 const govArray = getGovernors()
 
- 
-
-
 let currentColony = ""
-
     
     for (const gov of govArray){
         if (gov.id === govValue){
@@ -48,33 +37,7 @@ let currentColony = ""
         }
     }
 
-
+    let html = `<h2>${currentColony} Minerals </h2>`
     
-    
-
-
-    let html = `<h2>planet ${currentColony} </h2>`
-    
-    return html
-
-    
+    return html    
 }
-
-
-// const governerFunction = () => {
-    
-//     for (const gov of govArray){
-//         if (gov.id === govValue){
-//             const govColony = gov.colonyId
-//             for (const colony of coloniesArray){
-//                 if  (colony.id === govColony){
-//                      currentColony = colony.name
-//                 }
-//             }
-
-//         }
-//     }
-
-
-    
-//     }
