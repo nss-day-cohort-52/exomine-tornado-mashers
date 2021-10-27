@@ -7,7 +7,7 @@ const mineral = "rock"
 const facilityName = "earth"
 
 
-export const cartHtml = () => {
+export const cart = () => {
 return `1 ton of ${mineral} from ${facilityName}`
 }
 
