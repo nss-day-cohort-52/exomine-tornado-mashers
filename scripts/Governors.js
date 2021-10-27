@@ -7,7 +7,7 @@ import { getGovernors } from "./dataAccess.js"
 
 const governorsArray = getGovernors()
 
-export const governorHTML = () => {
+export const governor = () => {
         let html = "<h2>choose a governor</h2>"
 
     html += `<select id="governor">`
