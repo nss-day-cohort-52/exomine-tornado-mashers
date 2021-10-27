@@ -9,14 +9,8 @@ import { getFacilities } from "./dataAccess.js"
 const facilitiesArray = getFacilities()
 
 export const facilities = () => {
-<<<<<<< HEAD
    
     let facilitiesHTML = `
-=======
-
-    
-    let html = "<h2>choose a facility</h2>"
->>>>>>> main
 
         <label for="chooseFacility" class="facilities__label">Choose a facility</label>
         <select name ="chooseFacility" id="facility">

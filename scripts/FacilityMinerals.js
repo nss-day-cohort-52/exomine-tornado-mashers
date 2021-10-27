@@ -37,11 +37,7 @@ export const facilityMinerals = () => {
     }
 
 
-<<<<<<< HEAD
     let html = `<h2>Facility Minerals for Alderaan</h2>`
-=======
-    let html = `<h2>facility minerals for ${currentFacility}</h2>`
->>>>>>> main
     html += "<ul>"
 
         for (const minfac of mineralFacilities){
