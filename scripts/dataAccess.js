@@ -27,7 +27,7 @@ export const getMineralsInventory = () => {
 } 
 
 export const getMineralFacilities = () => {
-    return database.mineralFacilities.map(mineralFacility => ({...mineralFacility}))
+    return database.facilityMinerals.map(facilityMineral => ({...facilityMineral}))
 }
 
 
