@@ -8,7 +8,7 @@ import { getFacilities } from "./dataAccess.js"
 
 const facilitiesArray = getFacilities()
 
-export const facilitiesHTML = () => {
+export const facilities = () => {
    let html = "<h2>choose a facility</h2>"
 
     html += `<select id="facility">`
