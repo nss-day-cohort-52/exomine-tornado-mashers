@@ -5,7 +5,7 @@ This module contains event listers and creates html for AvailableResources, and 
 
 */
 
-export const AvailableResources =() => {
+export const availableResources =() => {
     return `
         <h2>Alderaan Minerals</h2>
         <p>29 tons of Barab ore</p>
