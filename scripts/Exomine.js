@@ -24,10 +24,10 @@ export const renderHTML = () => {
         <section class="governor">${governorHTML}</section>
         <section class="available_resources"> ${availableResources()}</section> 
     </div>
-    <section class="facility">${facilitiesHTML}</section>
+    <section class="facilities">${facilitiesHTML}</section>
     
     <div class="bottom">
-        <section class="minerals_avail">${facilityMineralHTML}<section> 
+        <section class="minerals_avail">${facilityMineralHTML}</section> 
         <section class="cart">
             <div class="cartHTML">${cartHTML}</div>
             <div class="button">${buttonHTML}</div> 

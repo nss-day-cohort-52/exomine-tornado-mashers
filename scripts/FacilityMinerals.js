@@ -13,7 +13,7 @@ const facilityArray = getFacilities()
 
 export const facilityMinerals = () => {
 
-    let html = `<h2>facility mineral for Alderaan</h2>`
+    let html = `<h2>Facility Minerals for Alderaan</h2>`
     html += "<ul>"
 
     // This is how you have been converting objects to <li> elements
