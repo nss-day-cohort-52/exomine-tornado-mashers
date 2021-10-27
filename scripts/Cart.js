@@ -3,6 +3,13 @@
 This module contains event listers and creates html for cart to order minerals, and exports to Exomine.
 
 */
+
+import { getFacilities, getMinerals, getMineralsFacilities } from "./dataAccess.js"
+
+const facilties = getFacilities()
+
+
+
 const mineral = "rock"
 const facilityName = "earth"
 
