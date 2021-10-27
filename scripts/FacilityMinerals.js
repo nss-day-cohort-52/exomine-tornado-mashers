@@ -8,10 +8,10 @@ This module contains event listers and creates html for facilityMinerals, and ex
 import { getMineralFacilities, getFacilities } from "./dataAccess.js"
 
 const facilityArray = getFacilities()
-const facilityMinerals = getMineralFacilities()
 
 
-export const facilityMineralHTML = () => {
+
+export const facilityMineral = () => {
 
     let html = `<h2>facility mineral for ${facilityArray.name}</h2>`
     html += "<ul>"
