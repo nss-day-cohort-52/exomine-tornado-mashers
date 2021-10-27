@@ -22,3 +22,11 @@ document.addEventListener(
         console.log("state changed")
     }
 )
+
+document.addEventListener(
+    "governorChanged",
+    (event) => {
+        htmlPage()
+        console.log("state changed")
+    }
+)
