@@ -1,9 +1,10 @@
 import { cart } from "./Cart.js";
 import { facilities } from "./Facilities.js";
+import { facilityMinerals } from "./FacilityMinerals.js";
 import { governor} from "./Governors.js";
 import { button } from "./OrderButton.js";
 import { availableResources } from "./AvailableResources.js"
-import { facilityMineral } from "./FacilityMinerals.js";
+
 
 /*
 
@@ -14,7 +15,8 @@ const facilitiesHTML= facilities()
 const governorHTML = governor()
 const cartHTML = cart()
 const buttonHTML = button()
-const facilityMineralHTML = facilityMineral()
+const facilityMineralHTML = facilityMinerals()
+
 
 export const renderHTML = () => {
     return `
@@ -24,7 +26,7 @@ export const renderHTML = () => {
         <section class="available_resources"> ${availableResources()}</section> 
     </div>
     <section class="facility">${facilitiesHTML}</section>
-
+    
     <div class="bottom">
         <section class="minerals_avail">${facilityMineralHTML}<section> 
         <section class="cart">
@@ -34,3 +36,4 @@ export const renderHTML = () => {
     </div>
     `
 }
+
