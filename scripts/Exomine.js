@@ -3,7 +3,7 @@ import { facilities } from "./Facilities.js";
 import { facilityMinerals } from "./FacilityMinerals.js";
 import { governor} from "./Governors.js";
 import { button } from "./OrderButton.js";
-
+import { availableResources } from "./AvailableResources.js"
 
 /*
 
@@ -16,19 +16,16 @@ const cartHTML = cart()
 const buttonHTML = button()
 const facilityMineralHTML = facilityMinerals()
 
+
 export const renderHTML = () => {
     return `
     <h1>Solar System Mining Marketplace</h1>
     <div class="top">
         <section class="governor">${governorHTML}</section>
-        <section class="available_resources"> inventory of colonies</section> 
+        <section class="available_resources"> ${availableResources()}</section> 
     </div>
     <section class="facility">${facilitiesHTML}</section>
-
     
-
-
-
     <div class="bottom">
         <section class="minerals_avail">${facilityMineralHTML}<section> 
         <section class="cart">
