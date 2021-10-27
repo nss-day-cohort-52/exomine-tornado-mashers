@@ -3,10 +3,11 @@
 }
 
 .governor {
-    border: 3px solid red;
     display: flex;
-    flex: 3;
+    flex: 1;
     margin: 1em;
+    padding: 2em;
+    align-items: baseline;
 }
 
 .governor__label,
@@ -15,9 +16,10 @@
 }
 
 .available_resources {
-    border: 3px solid green;
-    flex: 2;
+    flex: 1;
     margin: 1em 1em 1em 0;
+    padding: 1em 2em;
+    text-align: center;
 }
 
 .bottom {

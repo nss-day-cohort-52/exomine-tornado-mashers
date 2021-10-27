@@ -11,10 +11,6 @@ This module imports html from individual modules and exports to main.js.
 
 */
 
-
-
-
-
 export const renderHTML = () => {
     return `
     <h1>Solar System Mining Marketplace</h1>
@@ -22,10 +18,10 @@ export const renderHTML = () => {
         <section class="governor">${governor()}</section>
         <section class="available_resources"> ${availableResources()}</section> 
     </div>
-    <section class="facilities">${facilitiesHTML}</section>
+    <section class="facilities">${facilities()}</section>
     
     <div class="bottom">
-        <section class="minerals_avail">${facilityMineralHTML}</section> 
+        <section class="minerals_avail">${facilityMinerals()}</section> 
         <section class="cart">
             <div class="cartHTML">${cart()}</div>
             <div class="button">${button()}</div> 

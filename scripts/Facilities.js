@@ -19,7 +19,7 @@ export const facilities = () => {
 
     const facilityOptions = facilitiesArray.map( (facility) => {
         if (facility.isActive){
-        return `<option value="${facility.id}">${facility.name}</option>`
+            return `<option value="${facility.id}">${facility.name}</option>`
         }
     })
 
