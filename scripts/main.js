@@ -14,3 +14,11 @@ el.innerHTML = renderHTML()
 }
 
 htmlPage()
+
+document.addEventListener(
+    "facilitychanged",
+    (event) => {
+        htmlPage()
+        console.log("state changed")
+    }
+)
