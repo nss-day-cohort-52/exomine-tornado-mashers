@@ -82,45 +82,47 @@ export const addMineralPurchase = () => {
     }
 
     //find mineral 
-    const findMineral = () => {
-        for (const minInvItem of database.mineralInventory) {
+    const findMinInv = () => {
+        for (const minInvObj of database.mineralInventory) {
             let colonyId = findColony()
-            if (minInvItem.colonyId === colonyId && minInvItem.mineralId === mineralPurchase.mineralId) {
+            if (minInvObj.colonyId === colonyId && minInvObj.mineralId === mineralPurchase.mineralId) {
 
                 //add mineral to appropriate colony if it already exists in their inventory
-                minInvItem.mineralQty += 1
-  
-            } else {
-                
-                //determine if there is a primary key for the item
-                if (database.mineralInventory.length === 0) {
-                    minInvItem.id = 1
-
-                    //add a primary key if necessary
-                } else {
-                    
-                    //add mineral to colony's inventory if it does not already exist
-                    const lastIndex = database.mineralInventory.length - 1
-                    newOrder.id = database.mineralInventory[lastIndex].id + 1
-                    newOrder.mineralId = mineralPurchase.mineralId
-                    newOrder.colonyId = colonyId
-                    newOrder.mineralQty += 1
-
-                    //database.mineralInventory.push(newOrder)
-                    return newOrder
-
-                }
+                return minInvObj
             }
         }
     }
- 
-    console.log(findMineral())
+
+    if (findMinInv()) {
+
+        findMinInv().mineralQty += 1
+    } else {
+              
+        //determine if there is a primary key for the item
+        if (database.mineralInventory.length === 0) {
+            newOrder.id = 1
+
+          //add a primary key if necessary
+        } else {
+                    
+            //add mineral to colony's inventory if it does not already exist
+            const lastIndex = database.mineralInventory.length - 1
+            newOrder.id = database.mineralInventory[lastIndex].id + 1
+        }
+        
+        newOrder.mineralId = mineralPurchase.mineralId
+        newOrder.colonyId = findColony()
+        newOrder.mineralQty = 1
+                    
+        database.mineralInventory.push(newOrder)                
+    }
 
     //subtract mineral from appropriate colony
 
     //Reset transientState & purchaseBuilder
 
     database.purchaseBuilder = {}
+    delete database.transientState.mineralId
 
     //Broadcast notification that permanent state has changed
 
