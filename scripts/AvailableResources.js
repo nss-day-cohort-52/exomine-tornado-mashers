@@ -7,9 +7,7 @@ This module contains event listers and creates html for AvailableResources, and 
 import { getColonies, getGovernors, getMinerals, getMineralsInventory, getGovernorPreselector } from "./dataAccess.js"
 
 export const availableResources = () => {
-    
-    
-    
+
     const coloniesArray = getColonies()
     const govArray = getGovernors()
     const mineralInv = getMineralsInventory()
@@ -55,6 +53,7 @@ export const availableResources = () => {
                 }
             }
         }
+
 
     html += "</ul>"
     return html

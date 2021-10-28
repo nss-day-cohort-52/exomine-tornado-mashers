@@ -44,23 +44,88 @@ export const getMineralPreselector = () => {
 
 export const setFacility = (id) => {
     database.transientState.facilityId = id
-    document.dispatchEvent( new CustomEvent("stateChanged") )
+    document.dispatchEvent( new CustomEvent("facilityChanged") )
 }
 
 export const setGovernor = (id) => {
     database.transientState.governorId = id
-    document.dispatchEvent( new CustomEvent("stateChanged") )
+    document.dispatchEvent( new CustomEvent("governorChanged") )
 }
 
 export const setMineral = (id) => {
     database.transientState.mineralId = id
-    document.dispatchEvent( new CustomEvent("stateChanged") )
+    document.dispatchEvent( new CustomEvent("mineralChanged") )
 }
 
 export const purchaseMineral = () => {
 
         // Broadcast custom event to entire documement so that the
         // application can re-render and update state
-        document.dispatchEvent( new CustomEvent("stateChanged") )
+        document.dispatchEvent( new CustomEvent("purchaseButtonChanged") )
     }
+
+export const addMineralPurchase = () => {
+
+    //get current state from transientState & purchaseBuilder
+    const mineralPurchase = {...database.transientState}
+    const newOrder = {...database.purchaseBuilder}
+
+   
+    
+    //find governor's colony
+    const findColony = () => {
+        for (const gov of database.governors) {
+            if (gov.id === mineralPurchase.governorId) {
+                return gov.colonyId
+            }
+        }
+    }
+
+    //find mineral 
+    const findMineral = () => {
+        for (const minInvItem of database.mineralInventory) {
+            let colonyId = findColony()
+            if (minInvItem.colonyId === colonyId && minInvItem.mineralId === mineralPurchase.mineralId) {
+
+                //add mineral to appropriate colony if it already exists in their inventory
+                minInvItem.mineralQty += 1
+  
+            } else {
+                
+                //determine if there is a primary key for the item
+                if (database.mineralInventory.length === 0) {
+                    minInvItem.id = 1
+
+                    //add a primary key if necessary
+                } else {
+                    
+                    //add mineral to colony's inventory if it does not already exist
+                    const lastIndex = database.mineralInventory.length - 1
+                    newOrder.id = database.mineralInventory[lastIndex].id + 1
+                    newOrder.mineralId = mineralPurchase.mineralId
+                    newOrder.colonyId = colonyId
+                    newOrder.mineralQty += 1
+
+                    //database.mineralInventory.push(newOrder)
+                    return newOrder
+
+                }
+            }
+        }
+    }
+ 
+    console.log(findMineral())
+
+    //subtract mineral from appropriate colony
+
+    //Reset transientState & purchaseBuilder
+
+    database.purchaseBuilder = {}
+
+    //Broadcast notification that permanent state has changed
+
+    document.dispatchEvent( new CustomEvent("purchaseMineralChanged") )
+
+
+}
 
