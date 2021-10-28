@@ -46,10 +46,10 @@ export const facilityMinerals = () => {
     let html = `<h2>Facility Minerals for ${currentFacility}</h2>`
     html += "<ul>"
 
-        for (const minfac of mineralFacilities){
+        for (const minfac of mineralFacilities) {
             html += "<li>"
-            if (minfac.facilityId ===targetValue){
-                for (const mineral of mineralArray){
+            if (minfac.facilityId === targetValue) {
+                for (const mineral of mineralArray) {
                     if (minfac.mineralId === mineral.id ) {
 
                         if (mineral.id === minSelector) {
