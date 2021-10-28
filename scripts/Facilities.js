@@ -4,7 +4,7 @@ This module contains event listers and creates html for facilities, and exports 
 
 */
 
-import { getFacilities, setFacility, getFacilityPreselector } from "./dataAccess.js"
+import { getFacilities, setFacility, getFacilityPreselector, getGovernorPreselector } from "./dataAccess.js"
 
 const facilitiesArray = getFacilities()
 
@@ -25,23 +25,28 @@ export const facilities = () => {
         <select name ="chooseFacility" id="facility">
         <option name ="chooseFacility" value="0">Choose a facility</option>
     `
-    //create variable to set pre-selector before HTML regeneration
-    const facSelector = getFacilityPreselector()
-
-    const facilityOptions = facilitiesArray.map( (facility) => {
-        if (facility.isActive){
-            
-            //use if-else to mark the chosen governor as default governor before HTML regereragtion
-            if (facility.id === facSelector) {
-                return `<option name="chooseFacility" value="${facility.id}" selected="selected">${facility.name}</option>`
-            } else {
-                return `<option name ="chooseFacility" value="${facility.id}">${facility.name}</option>`
+    const getGovernor = getGovernorPreselector()
+    
+    if (getGovernor >= 0) {
+        
+        //create variable to set pre-selector before HTML regeneration
+        const facSelector = getFacilityPreselector()
+    
+        const facilityOptions = facilitiesArray.map( (facility) => {
+            if (facility.isActive){
+                
+                //use if-else to mark the chosen governor as default governor before HTML regereragtion
+                if (facility.id === facSelector) {
+                    return `<option name="chooseFacility" value="${facility.id}" selected="selected">${facility.name}</option>`
+                } else {
+                    return `<option name ="chooseFacility" value="${facility.id}">${facility.name}</option>`
+                }
             }
-        }
-    })
-
-    facilitiesHTML += facilityOptions.join("")
+        })
+        facilitiesHTML += facilityOptions.join("")
+        
+        
+    }
     facilitiesHTML += "</select>"
-
     return facilitiesHTML
 }

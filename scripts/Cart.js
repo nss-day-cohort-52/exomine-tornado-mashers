@@ -4,7 +4,18 @@ This module contains event listers and creates html for cart to order minerals, 
 
 */
 
-import { getFacilities, getMinerals, getMineralPreselector, getFacilityPreselector } from "./dataAccess.js"
+import { getFacilities, getMinerals, getMineralPreselector, getFacilityPreselector, setMineral } from "./dataAccess.js"
+
+document.addEventListener(
+    "change",
+    (event) => {
+        if (event.target.name ==="chooseFacility"){
+            setMineral(-1)
+            cart()
+            document.dispatchEvent( new CustomEvent("stateChanged") )
+        }
+    }
+)
 
 
 // Find name of mineral when called by cart()
@@ -46,7 +57,7 @@ export const cart = () => {
     
         return `
             <h2>Space Cart</h2>
-            1 ton of ${getMineralName()} from ${getFacilityName()}`
+            You have chosen 1 ton of ${getMineralName()} from ${getFacilityName()}`
     } else {
         return `<h2>Space Cart</h2>`
     }

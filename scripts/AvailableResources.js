@@ -25,13 +25,18 @@ export const availableResources = () => {
             const govColony = gov.colonyId
             for (const colonyName of coloniesArray) {
                 if  (colonyName.id === govColony){
-                     currentColony = colonyName.name
+                    currentColony = colonyName.name
                 }
             }
         }
     }
 
-    let html = `<h2>${currentColony} Minerals </h2>`
+    let html = ""
+    if (currentColony === ""){
+        html = `<h2>Colony Minerals </h2>`
+    } else {
+        html = `<h2>${currentColony} Minerals </h2>`
+    }
 
     html += "<ul>"
 
