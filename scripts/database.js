@@ -147,7 +147,9 @@ export const database = {
         { id: 10, name: "Forrested Moon of Endor", isActive: true }
     ],
 
-    transientState: {}
+    transientState: {},
+
+    purchaseBuilder: {}
 
 }
 

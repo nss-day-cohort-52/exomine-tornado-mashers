@@ -15,7 +15,22 @@ el.innerHTML = renderHTML()
 
 renderPageHTML()
 
-document.addEventListener("stateChanged", event => {
+document.addEventListener("governorChanged", event => {
+    console.log("GOVERNOR: State of data has changed. Regenerating HTML...")
+    renderPageHTML()
+})
+
+document.addEventListener("mineralChanged", event => {
+    console.log("MINERAL: State of data has changed. Regenerating HTML...")
+    renderPageHTML()
+})
+
+document.addEventListener("facilityChanged", event => {
+    console.log("FACILITY: State of data has changed. Regenerating HTML...")
+    renderPageHTML()
+})
+
+document.addEventListener("purchaseMineralChanged", event => {
     console.log("State of data has changed. Regenerating HTML...")
     renderPageHTML()
 })
