@@ -8,7 +8,7 @@ This module contains event listers and creates html for facilityMinerals, and ex
 import { getMineralFacilities, getFacilities, getMinerals, setMineral, getMineralPreselector, getFacilityPreselector } from "./dataAccess.js"
 
 const facilitiesArray = getFacilities()
-const mineralFacilities = getMineralFacilities()
+//const mineralFacilities = getMineralFacilities()
 const mineralArray = getMinerals()
 
 
@@ -29,10 +29,10 @@ export const facilityMinerals = () => {
     const targetValue = getFacilityPreselector()
 
     let currentFacility = ""
-    for (const minfac of mineralFacilities){
-        if (minfac.facilityId === targetValue){
-            for (const facility of facilitiesArray){
-                if  (facility.id === minfac.facilityId){
+    for (const minfac of getMineralFacilities()) {
+        if (minfac.facilityId === targetValue) {
+            for (const facility of facilitiesArray) {
+                if  (facility.id === minfac.facilityId) {
                     currentFacility = facility.name
                 }
             }
@@ -46,7 +46,7 @@ export const facilityMinerals = () => {
     let html = `<h2>Facility Minerals for ${currentFacility}</h2>`
     html += "<ul>"
 
-        for (const minfac of mineralFacilities) {
+        for (const minfac of getMineralFacilities()) {
             html += "<li>"
             if (minfac.facilityId === targetValue) {
                 for (const mineral of mineralArray) {
