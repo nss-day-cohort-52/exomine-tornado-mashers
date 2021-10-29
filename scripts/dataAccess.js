@@ -69,7 +69,8 @@ export const addMineralPurchase = () => {
     //get current state from transientState & purchaseBuilder
     const mineralPurchase = {...database.transientState}
     const newOrder = {...database.purchaseBuilder}
-       
+
+    
     //find governor's colony
     const findColony = () => {
         for (const gov of database.governors) {
@@ -93,7 +94,7 @@ export const addMineralPurchase = () => {
 
         findMinInv().mineralQty += 1
     } else {
-              
+        
         //determine if there is a primary key for the item
         if (database.mineralInventory.length === 0) {
             newOrder.id = 1
@@ -113,12 +114,11 @@ export const addMineralPurchase = () => {
         database.mineralInventory.push(newOrder)                
     }
 
-    //subtract mineral from appropriate colony
-
-    //find facilityMineral object.id
-    for (const facMinObj of database.facilityMinerals) {
-        if (facMinObj.facilityId === database.transientState.facilityId && facMinObj.mineralId === database.transientState.mineralId) {
-            facMinObj.quantity -= 1
+    for (const fac of database.facilityMinerals){
+        if (fac.facilityId === database.transientState.facilityId){
+            if (fac.mineralId === findMinInv().mineralId){
+                fac.quantity -= 1 
+            }
         }
     }
 
