@@ -45,6 +45,10 @@ export const getFacilityPreselector = () => {
 export const getMineralPreselector = () => {
     return database.transientState.mineralId
 }
+// this is code i'm adding to test something
+export const getPurchaseBuilder = () => {
+    return database.purchaseBuilder
+}
 
 export const setFacility = (id) => {
     database.transientState.facilityId = id
