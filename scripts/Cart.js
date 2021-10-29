@@ -12,7 +12,7 @@ document.addEventListener(
     "change",
     (event) => {
         if (event.target.name === "selectMineral") {
-            cart()
+
             document.dispatchEvent( new CustomEvent("mineralChanged") )
         }
     }
