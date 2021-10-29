@@ -23,7 +23,7 @@ export const getMinerals = () => {
 }
 
 export const getChosenMaterials = () => {
-    return database.chosenMaterials(chosMat => ({...chosMat}))
+    return database.chosenMaterials.map(chosMat => ({...chosMat}))
 }
 
 export const getMineralsInventory = () => {
