@@ -9,76 +9,55 @@ import { getFacilities, getMinerals, getMineralPreselector, getFacilityPreselect
 document.addEventListener(
     "change",
     (event) => {
-        if (event.target.name ==="chooseFacility"){
-            setMineral(-1)
+        if (event.target.name === "selectMineral") {
             cart()
-            document.dispatchEvent( new CustomEvent("stateChanged") )
+            document.dispatchEvent( new CustomEvent("mineralChanged") )
         }
     }
-)
+    )
 
-
-// Find name of mineral when called by cart()
-const getMineralName = () => {
     
-    const minArray = getMinerals()
-    const minSelector = getMineralPreselector()
-    
-    for (const mineral of minArray) {
-        if (mineral.id === minSelector) {
-            return mineral.type
-        }
-    }
-    
-}
-
-// Find name of facility when called by cart()
-const getFacilityName = () => {
-    
-    const facArray = getFacilities()
-    const facSelector = getFacilityPreselector()
-    
-    for (const facility of facArray) {
-        if (facility.id === facSelector) {
-            return facility.name
-        }
-    }
-
-}
-
-
-// make list items for each "order" (order being individual minerals chosen) purchasebuilder? chosen materials
-
 /* Export only "Space Cart" to Exomine HTML until a facility and a mineral are selected, 
    then display 1 ton of mineral from facility in Space Cart. */
-// export const cart = () => {
-    
-//     const minSelector = getMineralPreselector()
-//     const cartcart = purchase
-    
-//     if (minSelector >= 0) {
-    
-//         return `
-//             <h2>Space Cart</h2>
-//             You have chosen 1 ton of ${getMineralName()} from ${getFacilityName()}`
-//     } else {
-//         return `<h2>Space Cart</h2>`
-//     }
-// }
-
 export const cart = () => {
-    let html = "Space Cart"
-    if (getMineralPreselector()) {
-        
-        for (const choice of getChosenMaterials()) {
-            html += `${choice}`
+    let html = ""
 
+    if (getChosenMaterials().length === 0){
+        return html += `<h2>Space Cart</h2>`
+    } else {
+        html += `<h2>Space Cart</h2>`
+        html += `<ul>`
+    for (const order of getChosenMaterials()){
+
+        const getMineralName = () => {
+    
+            const minSelector = order.mineralId
+            
+            for (const mineral of getMinerals()) {
+                if (mineral.id === minSelector) {
+                    return mineral.type
+                }
+            }
             
         }
+        
+        // Find name of facility when called by cart()
+        const getFacilityName = () => {
+            
+            const facSelector = order.facilityId
+            
+            for (const facility of getFacilities()) {
+                if (facility.id === facSelector) {
+                    return facility.name
+                }
+            }
+        
+        }
 
+        html += `<li>
+            You have chosen 1 ton of ${getMineralName()} from ${getFacilityName()}</li>`
     }
-    return html
-
-
+    html += `</ul>`
 }
-
+return html
+}

@@ -23,7 +23,7 @@ export const getMinerals = () => {
 }
 
 export const getChosenMaterials = () => {
-    return database.chosenMaterials(chosMat => ({...chosMat}))
+    return database.chosenMaterials.map(chosMat => ({...chosMat}))
 }
 
 export const getMineralsInventory = () => {
@@ -44,10 +44,6 @@ export const getFacilityPreselector = () => {
 
 export const getMineralPreselector = () => {
     return database.transientState.mineralId
-}
-// this is code i'm adding to test something
-export const getPurchaseBuilder = () => {
-    return database.purchaseBuilder
 }
 
 export const setFacility = (id) => {
@@ -88,6 +84,7 @@ export const buildSpaceCart = () => {
     database.chosenMaterials.push(newOrder)
     newOrder = {}
     delete database.transientState.mineralId
+    document.dispatchEvent(new CustomEvent("stateChanged"))
 
 }
 
@@ -162,4 +159,3 @@ export const addMineralPurchase = () => {
 
 
 }
-

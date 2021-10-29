@@ -3,6 +3,7 @@
 This module contains event listers and creates html for governors, and exports to Exomine.
 
 */
+import { cart } from "./Cart.js"
 import { getGovernors, setGovernor, getGovernorPreselector, setChosenMaterials, setFacility,  } from "./dataAccess.js"
 
 
@@ -14,7 +15,7 @@ document.addEventListener(
         if (event.target.name === "chooseGovernor") {
             setChosenMaterials()
             setFacility(-1)
-            setGovernor(parseInt(event.target.value)) 
+            setGovernor(parseInt(event.target.value))
         }
     }
 )
