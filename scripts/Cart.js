@@ -7,6 +7,7 @@ This module contains event listers and creates html for cart to order minerals, 
 import { getFacilities, getMinerals, getMineralPreselector, getFacilityPreselector, setMineral, getChosenMaterials } from "./dataAccess.js"
 
 
+
 document.addEventListener(
     "change",
     (event) => {

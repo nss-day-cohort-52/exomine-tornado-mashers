@@ -5,6 +5,7 @@ This module contains event listers and creates html for facilityMinerals, and ex
 
 */
 
+import { cart } from "./Cart.js"
 import { getMineralFacilities, getFacilities, getMinerals, setMineral, getMineralPreselector, getFacilityPreselector, buildSpaceCart } from "./dataAccess.js"
 
 const facilitiesArray = getFacilities()
