@@ -68,7 +68,6 @@ export const setChosenMaterials = () => {
 
 export const buildSpaceCart = () => {
     
-    //chosenMaterials
     let newOrder = {...database.transientState}
     if (database.chosenMaterials.length === 0){
         newOrder.id = 1
@@ -84,7 +83,7 @@ export const buildSpaceCart = () => {
     database.chosenMaterials.push(newOrder)
     newOrder = {}
     delete database.transientState.mineralId
-    document.dispatchEvent( new CustomEvent("facilityChanged"))
+    document.dispatchEvent( new CustomEvent("facilityChanged") )
 
 }
 
@@ -92,69 +91,70 @@ export const addMineralPurchase = () => {
 
     for (const material of database.chosenMaterials){ //changed
 
-    //get current state from transientState & purchaseBuilder
-    const mineralPurchase = material //changed
-    const newOrder = {...database.purchaseBuilder}
+        //get current state from transientState & purchaseBuilder
+        const mineralPurchase = material //changed
+        const newOrder = {...database.purchaseBuilder}
 
     
-    //find governor's colony
-    const findColony = () => {
-        for (const gov of database.governors) {
-            if (gov.id === mineralPurchase.governorId) {
+        //find governor's colony
+        const findColony = () => {
+            for (const gov of database.governors) {
+                if (gov.id === mineralPurchase.governorId) {
                 return gov.colonyId
+                }
             }
         }
-    }
 
-    //find mineral 
-    const findMinInv = () => {
-        for (const minInvObj of database.mineralInventory) {
-            if (minInvObj.colonyId === findColony() && minInvObj.mineralId === mineralPurchase.mineralId) {
+        //find mineral 
+        const findMinInv = () => {
+            for (const minInvObj of database.mineralInventory) {
+                if (minInvObj.colonyId === findColony() && minInvObj.mineralId === mineralPurchase.mineralId) {
 
-                return minInvObj
+                    return minInvObj
+                }
             }
         }
-    }
 
-    if (findMinInv()) {
+        if (findMinInv()) {
 
-        findMinInv().mineralQty += 1
-    } else {
+            findMinInv().mineralQty += 1
         
-        //determine if there is a primary key for the item
-        if (database.mineralInventory.length === 0) {
-            newOrder.id = 1
-
-          //add a primary key if necessary
         } else {
-                    
-            //add mineral to colony's inventory if it does not already exist
-            const lastIndex = database.mineralInventory.length - 1
-            newOrder.id = database.mineralInventory[lastIndex].id + 1
-        }
         
-        newOrder.mineralId = mineralPurchase.mineralId
-        newOrder.colonyId = findColony()
-        newOrder.mineralQty = 1
-                    
-        database.mineralInventory.push(newOrder)                
-    }
+            //determine if there is a primary key for the item
+            if (database.mineralInventory.length === 0) {
+                newOrder.id = 1
 
-    for (const fac of database.facilityMinerals){
-        if (fac.facilityId === database.transientState.facilityId){
-            if (fac.mineralId === findMinInv().mineralId){
+              //add a primary key if necessary
+            } else {
+                    
+                //add mineral to colony's inventory if it does not already exist
+                const lastIndex = database.mineralInventory.length - 1
+                newOrder.id = database.mineralInventory[lastIndex].id + 1
+            }
+        
+            newOrder.mineralId = mineralPurchase.mineralId
+            newOrder.colonyId = findColony()
+            newOrder.mineralQty = 1
+                    
+            database.mineralInventory.push(newOrder)                
+        }
+
+            for (const fac of database.facilityMinerals){
+            if (fac.facilityId === database.transientState.facilityId){
+                if (fac.mineralId === findMinInv().mineralId){
                 fac.quantity -= 1 
+                }
             }
         }
-    }
-    } //changed
+    } 
     
     //Reset transientState & purchaseBuilder
 
     database.purchaseBuilder = {}
     database.chosenMaterials = [] //changed
-    //Broadcast notification that permanent state has changed
 
+    //Broadcast notification that permanent state has changed
     document.dispatchEvent( new CustomEvent("purchaseMineralChanged") )
 
 

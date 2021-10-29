@@ -30,7 +30,7 @@ export const cart = () => {
         return html += `<h2>Space Cart</h2>`
     } else {
         html += `<h2>Space Cart</h2>`
-        html += `<ul>`
+        html += `<ul class="spaceCart">`
     for (const order of getChosenMaterials()){
 
         const getMineralName = () => {
