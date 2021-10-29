@@ -5,10 +5,9 @@ This module contains event listers and creates html for facilityMinerals, and ex
 
 */
 
-import { getMineralFacilities, getFacilities, getMinerals, setMineral, getMineralPreselector, getFacilityPreselector } from "./dataAccess.js"
+import { getMineralFacilities, getFacilities, getMinerals, setMineral, getMineralPreselector, getFacilityPreselector, buildSpaceCart } from "./dataAccess.js"
 
 const facilitiesArray = getFacilities()
-
 const mineralArray = getMinerals()
 
 
@@ -17,6 +16,7 @@ document.addEventListener(
     (event) => {
         if (event.target.name === "selectMineral") {
             setMineral(parseInt(event.target.value))
+            buildSpaceCart()
         }
     }
     )
@@ -46,29 +46,44 @@ export const facilityMinerals = () => {
     let html = `<h2>Facility Minerals for ${currentFacility}</h2>`
     html += "<ul>"
 
-        for (const minfac of getMineralFacilities()) {
-            html += "<li>"
-            if (minfac.facilityId === targetValue) {
-                for (const mineral of mineralArray) {
-                    if (minfac.mineralId === mineral.id ) {
-
-                        if (mineral.id === minSelector) {
-                            
-                            html += `<li>
-                                <input type="radio" name="selectMineral" value="${mineral.id}" checked="checked"/> ${minfac.quantity} tons of ${mineral.type}
-                            </li>`
-
-                        } else {
-
-                            html += `<li>
-                                <input type="radio" name="selectMineral" value="${mineral.id}" /> ${minfac.quantity} tons of ${mineral.type}
-                            </li>`
+    for (const minfac of getMineralFacilities()) {
+        html += "<li>"
+        if (minfac.facilityId === targetValue) {
+            for (const mineral of mineralArray) {
+                if (minfac.mineralId === mineral.id ) {
+                     
+                    if (mineral.id === minSelector) {
+                                           
+                        html += `<li>
+                        <input type="radio" name="selectMineral" value="${mineral.id}" checked="checked"/> ${minfac.quantity} tons of ${mineral.type}
+                        </li>`
+                        
+                    } else {
+                        
+                        html += `<li>
+                        <input type="radio" name="selectMineral" value="${mineral.id}" /> ${minfac.quantity} tons of ${mineral.type}
+                        </li>`
                     }        
                 }
             }
         }
     }
-        html += "</ul>"
-        return html
+    
+    //Find number of minerals listed to assign value to "Purchase All" button
+    
+//    const findValue = getMinerals().length + 1
+
+    //Add "purchase all" button
+//    if (getFacilityPreselector()) {
+//        if (getMineralPreselector() === findValue) {
+//            html += `<li><input type="radio" name="selectMineral" value="${findValue}" checked="checked"/> Purchase All Minerals</li>`
+//        } else {
+//            html += `<li><input type="radio" name="selectMineral" value="${findValue}" /> Purchase All Minerals</li>`
+//        }
+//    }
+    
+    html += "</ul>"
+    
+    return html
 
 }

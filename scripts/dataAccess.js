@@ -22,6 +22,10 @@ export const getMinerals = () => {
     return database.minerals.map(mineral => ({...mineral}))
 }
 
+export const getChosenMaterials = () => {
+    return database.chosenMaterials(chosMat => ({...chosMat}))
+}
+
 export const getMineralsInventory = () => {
     return database.mineralInventory.map(inventory => ({...inventory}))
 } 
@@ -57,12 +61,20 @@ export const setMineral = (id) => {
     document.dispatchEvent( new CustomEvent("mineralChanged") )
 }
 
-export const purchaseMineral = () => {
+export const setChosenMaterials = () => {
+    database.chosenMaterials = []
+    document.dispatchEvent(new CustomEvent("chosMatChanged"))
+}
 
-        // Broadcast custom event to entire documement so that the
-        // application can re-render and update state
-        document.dispatchEvent( new CustomEvent("purchaseButtonChanged") )
-    }
+export const buildSpaceCart = () => {
+    
+    //chosenMaterials
+    let newOrder = {...database.transientState}
+    database.chosenMaterials.push(newOrder)
+    newOrder = {}
+    delete database.transientState.mineralId
+
+}
 
 export const addMineralPurchase = () => {
 
@@ -83,10 +95,8 @@ export const addMineralPurchase = () => {
     //find mineral 
     const findMinInv = () => {
         for (const minInvObj of database.mineralInventory) {
-            let colonyId = findColony()
-            if (minInvObj.colonyId === colonyId && minInvObj.mineralId === mineralPurchase.mineralId) {
+            if (minInvObj.colonyId === findColony() && minInvObj.mineralId === mineralPurchase.mineralId) {
 
-                //add mineral to appropriate colony if it already exists in their inventory
                 return minInvObj
             }
         }
@@ -124,8 +134,7 @@ export const addMineralPurchase = () => {
         }
     }
 
-    //subtract mineral from appropriate colony
-
+    
     //Reset transientState & purchaseBuilder
 
     database.purchaseBuilder = {}

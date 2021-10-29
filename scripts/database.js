@@ -149,7 +149,9 @@ export const database = {
 
     transientState: {},
 
-    purchaseBuilder: {}
+    purchaseBuilder: {},
+
+    chosenMaterials: []
 
 }
 
