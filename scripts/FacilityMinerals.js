@@ -46,6 +46,7 @@ export const facilityMinerals = () => {
 
     let html = `<h2>Facility Minerals for ${currentFacility}</h2>`
     html += "<ul>"
+    
 
     for (const minfac of getMineralFacilities()) {
         html += "<li>"
