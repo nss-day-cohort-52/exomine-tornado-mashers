@@ -141,7 +141,7 @@ export const addMineralPurchase = () => {
         }
 
             for (const fac of database.facilityMinerals){
-            if (fac.facilityId === database.transientState.facilityId){
+            if (fac.facilityId === material.facilityId){
                 if (fac.mineralId === findMinInv().mineralId){
                 fac.quantity -= 1 
                 }

@@ -8,10 +8,12 @@ This module contains event listers and creates html for facilityMinerals, and ex
 import { cart } from "./Cart.js"
 import { getMineralFacilities, getFacilities, getMinerals, setMineral, getFacilityPreselector, buildSpaceCart, getChosenMaterials } from "./dataAccess.js"
 
+
 const facilitiesArray = getFacilities()
 const mineralArray = getMinerals()
 
 
+getFacilityPreselector()
 document.addEventListener(
     "change",
     (event) => {
@@ -21,6 +23,8 @@ document.addEventListener(
         }
     }
     )
+
+  
 
 
 
@@ -53,22 +57,27 @@ export const facilityMinerals = () => {
         if (minfac.facilityId === targetValue) {
             for (const mineral of mineralArray) {
                 if (minfac.mineralId === mineral.id ) {
+
                     if (chosen.length === 0 ){
                         html += `<li>
                         <input type="radio" name="selectMineral" value="${mineral.id}" /> ${minfac.quantity} tons of ${mineral.type}
                         </li>`
                     } else if(chosen.length > 0){
                             const lastIndex = chosen.length -1
-                        if (mineral.id === chosen[lastIndex].mineralId) {
+                        if (mineral.id === chosen[lastIndex].mineralId && getFacilityPreselector() === chosen[lastIndex].facilityId) {
                             html += `<li>
                             <input type="radio" name="selectMineral" value="${mineral.id}" checked="checked"/> ${minfac.quantity} tons of ${mineral.type}
                             </li>`
+                            
                         } else {
                             html += `<li>
                         <input type="radio" name="selectMineral" value="${mineral.id}" /> ${minfac.quantity} tons of ${mineral.type}
                         </li>`
                         }
+
+                        
                 } 
+                
         }
     }
 }
