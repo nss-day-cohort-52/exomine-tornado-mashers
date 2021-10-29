@@ -22,6 +22,10 @@ export const getMinerals = () => {
     return database.minerals.map(mineral => ({...mineral}))
 }
 
+export const getChosenMaterials = () => {
+    return database.chosenMaterials(chosMat => ({...chosMat}))
+}
+
 export const getMineralsInventory = () => {
     return database.mineralInventory.map(inventory => ({...inventory}))
 } 
@@ -57,19 +61,28 @@ export const setMineral = (id) => {
     document.dispatchEvent( new CustomEvent("mineralChanged") )
 }
 
-export const purchaseMineral = () => {
+export const setChosenMaterials = () => {
+    database.chosenMaterials = []
+    document.dispatchEvent(new CustomEvent("chosMatChanged"))
+}
 
-        // Broadcast custom event to entire documement so that the
-        // application can re-render and update state
-        document.dispatchEvent( new CustomEvent("purchaseButtonChanged") )
-    }
+export const buildSpaceCart = () => {
+    
+    //chosenMaterials
+    let newOrder = {...database.transientState}
+    database.chosenMaterials.push(newOrder)
+    newOrder = {}
+    delete database.transientState.mineralId
+
+}
 
 export const addMineralPurchase = () => {
 
     //get current state from transientState & purchaseBuilder
     const mineralPurchase = {...database.transientState}
     const newOrder = {...database.purchaseBuilder}
-       
+
+    
     //find governor's colony
     const findColony = () => {
         for (const gov of database.governors) {
@@ -93,7 +106,7 @@ export const addMineralPurchase = () => {
 
         findMinInv().mineralQty += 1
     } else {
-              
+        
         //determine if there is a primary key for the item
         if (database.mineralInventory.length === 0) {
             newOrder.id = 1
@@ -113,15 +126,15 @@ export const addMineralPurchase = () => {
         database.mineralInventory.push(newOrder)                
     }
 
-    //subtract mineral from appropriate colony
-
-    //find facilityMineral object.id
-    for (const facMinObj of database.facilityMinerals) {
-        if (facMinObj.facilityId === database.transientState.facilityId && facMinObj.mineralId === database.transientState.mineralId) {
-            facMinObj.quantity -= 1
+    for (const fac of database.facilityMinerals){
+        if (fac.facilityId === database.transientState.facilityId){
+            if (fac.mineralId === findMinInv().mineralId){
+                fac.quantity -= 1 
+            }
         }
     }
 
+    
     //Reset transientState & purchaseBuilder
 
     database.purchaseBuilder = {}

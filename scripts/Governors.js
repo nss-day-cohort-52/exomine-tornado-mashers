@@ -3,7 +3,7 @@
 This module contains event listers and creates html for governors, and exports to Exomine.
 
 */
-import { getGovernors, setGovernor, getGovernorPreselector } from "./dataAccess.js"
+import { getGovernors, setGovernor, getGovernorPreselector, setChosenMaterials, setFacility,  } from "./dataAccess.js"
 
 
 const governorsArray = getGovernors()
@@ -12,6 +12,8 @@ document.addEventListener(
     "change",
     (event) => {
         if (event.target.name === "chooseGovernor") {
+            setChosenMaterials()
+            setFacility(-1)
             setGovernor(parseInt(event.target.value)) 
         }
     }

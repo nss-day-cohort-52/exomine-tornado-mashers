@@ -34,3 +34,8 @@ document.addEventListener("purchaseMineralChanged", event => {
     console.log("PURCHASE MINERAL: State of data has changed. Regenerating HTML...")
     renderPageHTML()
 })
+
+document.addEventListener("chosMatChanged", event => {
+    console.log("CHOSEN MINERALS: State of data has changed. Regenerating HTML...")
+    renderPageHTML()
+})
