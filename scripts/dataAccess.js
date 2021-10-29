@@ -84,7 +84,8 @@ export const buildSpaceCart = () => {
     database.chosenMaterials.push(newOrder)
     newOrder = {}
     delete database.transientState.mineralId
-    document.dispatchEvent( new CustomEvent("facilityChanged") )
+    document.dispatchEvent( new CustomEvent("facilityChanged"))
+
 }
 
 export const addMineralPurchase = () => {
