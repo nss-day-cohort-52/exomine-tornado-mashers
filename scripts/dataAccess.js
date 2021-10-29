@@ -70,6 +70,17 @@ export const buildSpaceCart = () => {
     
     //chosenMaterials
     let newOrder = {...database.transientState}
+    if (database.chosenMaterials.length === 0){
+        newOrder.id = 1
+
+          //add a primary key if necessary
+        } else {
+                    
+            //add mineral to colony's inventory if it does not already exist
+            const lastIndex = database.chosenMaterials.length - 1
+            newOrder.id = database.mineralInventory[lastIndex].id + 1
+        }
+
     database.chosenMaterials.push(newOrder)
     newOrder = {}
     delete database.transientState.mineralId
@@ -78,8 +89,10 @@ export const buildSpaceCart = () => {
 
 export const addMineralPurchase = () => {
 
+    for (const material of database.chosenMaterials){ //changed
+
     //get current state from transientState & purchaseBuilder
-    const mineralPurchase = {...database.transientState}
+    const mineralPurchase = material //changed
     const newOrder = {...database.purchaseBuilder}
 
     
@@ -133,13 +146,12 @@ export const addMineralPurchase = () => {
             }
         }
     }
-
+    } //changed
     
     //Reset transientState & purchaseBuilder
 
     database.purchaseBuilder = {}
-    delete database.transientState.mineralId
-
+    database.chosenMaterials = [] //changed
     //Broadcast notification that permanent state has changed
 
     document.dispatchEvent( new CustomEvent("purchaseMineralChanged") )
