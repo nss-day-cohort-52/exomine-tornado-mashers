@@ -18,6 +18,6 @@ document.addEventListener(
 
 export const button = () => {
     return `
-    <button id="orderButton" class="orderButton">Purchase Mineral</button>
+    <button id="orderButton" class="orderButton">Purchase Mineral(s)</button>
     `
 }
